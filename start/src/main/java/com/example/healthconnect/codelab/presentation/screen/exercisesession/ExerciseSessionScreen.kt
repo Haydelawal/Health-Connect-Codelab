@@ -187,7 +187,7 @@ fun ExerciseSessionScreen(
   }
 }
 
-@Preview
+@Preview(showSystemUi = true, showBackground = true)
 @Composable
 fun ExerciseSessionScreenPreview() {
   HealthConnectTheme {

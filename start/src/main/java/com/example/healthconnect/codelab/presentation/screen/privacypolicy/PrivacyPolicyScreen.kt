@@ -62,7 +62,7 @@ fun PrivacyPolicyScreen() {
   }
 }
 
-@Preview
+@Preview(showSystemUi = true, showBackground = true)
 @Composable
 fun PrivacyPolicyScreenPreview() {
   HealthConnectTheme {

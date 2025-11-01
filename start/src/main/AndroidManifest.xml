@@ -12,30 +12,64 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-  <!-- TODO: Required to specify which Health Connect permissions the app can request -->
+    <!-- TODO: Required to specify which Health Connect permissions the app can request -->
+    <!-- TODO: declare Health Connect visibility -->
 
-  <application
-      android:allowBackup="true"
-      android:icon="@mipmap/ic_launcher"
-      android:label="@string/app_name"
-      android:name="com.example.healthconnect.codelab.presentation.BaseApplication"
-      android:roundIcon="@mipmap/ic_launcher_round"
-      android:supportsRtl="true"
-      android:theme="@style/Theme.HealthConnect">
-    <activity
-        android:name="com.example.healthconnect.codelab.presentation.MainActivity"
-        android:exported="true"
+    <!-- TODO: Required to specify which Health Connect permissions the app can request -->
+    <uses-permission android:name="android.permission.health.READ_HEART_RATE" />
+    <uses-permission android:name="android.permission.health.WRITE_HEART_RATE" />
+    <uses-permission android:name="android.permission.health.READ_STEPS" />
+    <uses-permission android:name="android.permission.health.WRITE_STEPS" />
+    <uses-permission android:name="android.permission.health.READ_EXERCISE" />
+    <uses-permission android:name="android.permission.health.WRITE_EXERCISE" />
+    <uses-permission android:name="android.permission.health.READ_TOTAL_CALORIES_BURNED" />
+    <uses-permission android:name="android.permission.health.WRITE_TOTAL_CALORIES_BURNED" />
+    <uses-permission android:name="android.permission.health.READ_WEIGHT" />
+    <uses-permission android:name="android.permission.health.WRITE_WEIGHT" />
+
+    <!-- Read data in background  -->
+    <!-- TODO: Required to specify which Health Connect permissions the app can request -->
+    <uses-permission android:name="android.permission.health.READ_HEALTH_DATA_IN_BACKGROUND" />
+
+    <!-- TODO: Required to specify which Health Connect permissions the app can request -->
+    <uses-permission android:name="android.permission.health.READ_HEALTH_DATA_HISTORY" />
+
+    <application
+        android:name="com.example.healthconnect.codelab.presentation.BaseApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
         android:theme="@style/Theme.HealthConnect">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
+        <activity
+            android:name="com.example.healthconnect.codelab.presentation.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.HealthConnect">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
-      <!-- TODO: Add intent filter to handle permission rationale intent -->
+            <!-- TODO: Add intent filter to handle permission rationale intent -->
+            <!-- Permission handling for Android 13 and before -->
+            <intent-filter>
+                <action android:name="androidx.health.ACTION_SHOW_PERMISSIONS_RATIONALE" />
+            </intent-filter>
 
-    </activity>
-  </application>
+            <!-- Permission handling for Android 14 and later -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW_PERMISSION_USAGE" />
+                <category android:name="android.intent.category.HEALTH_PERMISSIONS" />
+            </intent-filter>
 
-  <!-- TODO: declare Health Connect visibility -->
+
+        </activity>
+    </application>
+
+    <!-- TODO: declare Health Connect visibility -->
+    <queries>
+        <package android:name="com.google.android.apps.healthdata" />
+    </queries>
 
 </manifest>
