@@ -186,7 +186,7 @@ fun InputReadingsScreen(
   }
 }
 
-@Preview
+@Preview(showSystemUi = true, showBackground = true)
 @Composable
 fun InputReadingsScreenPreview() {
   val inputTime = Instant.now()
